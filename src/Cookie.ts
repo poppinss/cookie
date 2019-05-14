@@ -27,7 +27,16 @@ export type CookieOptions = {
 /**
  * Pack a value to be saved as a cookie string. If `secretKey` is
  * defined, then cookie will be signed to avoid client side
- * tampering
+ * tampering.
+ *
+ * When setting the cookie header, it is recommended to [[serialize]] method
+ * instead.
+ *
+ * @example
+ * ```ts
+ * pack('hello world', 'a-long-secret-to-sign-cookie')
+ * pack({ hello: 'world' }, 'a-long-secret-to-sign-cookie')
+ * ```
  */
 export function pack (value: any, secretKey?: string): null | string {
   if (value === undefined || value === null) {
@@ -54,6 +63,12 @@ export function pack (value: any, secretKey?: string): null | string {
  * Unpack, previously packed cookie value. If cookie was signed and `secretKey` is
  * not passed to this method, then the signed value will be returned as a plain
  * cookie.
+ *
+ * @example
+ * ```ts
+ * const packed = pack('hello world', 'a-long-secret-to-sign-cookie')
+ * unpack(packed, 'a-long-secret-to-sign-cookie') // hello-world
+ * ```
  */
 export function unpack (value: string, secretKey?: string): null | { value: any, signed: boolean } {
   let signed = false
@@ -93,9 +108,22 @@ export function unpack (value: string, secretKey?: string): null | { value: any,
 }
 
 /**
- * Parse cookie header and return an object of cookies as `key/value` pair.
+ * Parse cookie header and return an object of cookies as `key/value` pair. The
+ * output of this method has two top level objects explained below:
  *
- * The output has two top level nodes with `signedCookies` and `plainCookies`.
+ * ## Signed cookies
+ * An object of cookies that are successfully verified and not being tampered.
+ *
+ * ## Plain cookies
+ * An object of cookies that were not signed initially via [[serialize]] method.
+ *
+ * @example
+ * ```ts
+ * const result = parse(req.headers['cookie'], 'a-long-secret-to-sign-cookie')
+ *
+ * result.signedCookies
+ * result.plainCookies
+ * ```
  */
 export function parse (
   cookieHeader: string,
@@ -127,6 +155,14 @@ export function parse (
 /**
  * Serializes a key/value pair to a string, which is supposed
  * to be set as `Set-Cookie` header value.
+ *
+ * @example
+ * ```ts
+ * const serialized = serialize('session-id', '1', 'a-long-secret-to-sign-cookie', {
+ *   // optional config
+ * })
+ * res.setHeader('set-cookie', serialized)
+ * ```
  */
 export function serialize (
   key: string,
