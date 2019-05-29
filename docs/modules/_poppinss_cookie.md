@@ -25,7 +25,7 @@
 
 **Ƭ CookieOptions**: *`object`*
 
-*Defined in [Cookie.ts:17](https://github.com/poppinss/cookie/blob/46edbe0/src/Cookie.ts#L17)*
+*Defined in [Cookie.ts:17](https://github.com/poppinss/cookie/blob/4581b8d/src/Cookie.ts#L17)*
 
 #### Type declaration
 
@@ -39,7 +39,7 @@ ___
 
 ▸ **pack**(value: *`any`*, secretKey?: *`undefined` \| `string`*): `null` \| `string`
 
-*Defined in [Cookie.ts:41](https://github.com/poppinss/cookie/blob/46edbe0/src/Cookie.ts#L41)*
+*Defined in [Cookie.ts:41](https://github.com/poppinss/cookie/blob/4581b8d/src/Cookie.ts#L41)*
 
 Pack a value to be saved as a cookie string. If `secretKey` is defined, then cookie will be signed to avoid client side tampering.
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **parse**(cookieHeader: *`string`*, secretKey?: *`undefined` \| `string`*): `object`
 
-*Defined in [Cookie.ts:128](https://github.com/poppinss/cookie/blob/46edbe0/src/Cookie.ts#L128)*
+*Defined in [Cookie.ts:128](https://github.com/poppinss/cookie/blob/4581b8d/src/Cookie.ts#L128)*
 
 Parse cookie header and return an object of cookies as `key/value` pair. The output of this method has two top level objects explained below:
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **serialize**(key: *`string`*, value: *`any`*, secretKey?: *`undefined` \| `string`*, options?: *`Partial`<[CookieOptions](_poppinss_cookie.md#cookieoptions)>*): `string` \| `null`
 
-*Defined in [Cookie.ts:167](https://github.com/poppinss/cookie/blob/46edbe0/src/Cookie.ts#L167)*
+*Defined in [Cookie.ts:167](https://github.com/poppinss/cookie/blob/4581b8d/src/Cookie.ts#L167)*
 
 Serializes a key/value pair to a string, which is supposed to be set as `Set-Cookie` header value.
 
@@ -135,7 +135,7 @@ ___
 
 ▸ **unpack**(value: *`string`*, secretKey?: *`undefined` \| `string`*): `null` \| `object`
 
-*Defined in [Cookie.ts:73](https://github.com/poppinss/cookie/blob/46edbe0/src/Cookie.ts#L73)*
+*Defined in [Cookie.ts:73](https://github.com/poppinss/cookie/blob/4581b8d/src/Cookie.ts#L73)*
 
 Unpack, previously packed cookie value. If cookie was signed and `secretKey` is not passed to this method, then the signed value will be returned as a plain cookie.
 
