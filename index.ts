@@ -1,4 +1,8 @@
-/*
+/**
+ * @module @poppinss/cookie
+ */
+
+ /*
 * @poppinss/cookie
 *
 * (c) Harminder Virk <virk@adonisjs.com>
