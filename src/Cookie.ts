@@ -20,7 +20,7 @@ export type CookieOptions = {
   httpOnly: boolean,
   maxAge: number,
   path: string,
-  sameSite: boolean | string,
+  sameSite: boolean | 'lax' | 'none' | 'strict',
   secure: boolean,
 }
 
