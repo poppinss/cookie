@@ -7,7 +7,7 @@
 * file that was distributed with this source code.
 */
 
-import * as test from 'japa'
+import test from 'japa'
 import { sign } from 'cookie-signature'
 import { pack, serialize, unpack, parse } from '../src/Cookie'
 

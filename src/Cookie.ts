@@ -11,8 +11,8 @@
  * file that was distributed with this source code.
  */
 
-import * as cookie from 'cookie'
-import * as cookieSignature from 'cookie-signature'
+import cookie from 'cookie'
+import cookieSignature from 'cookie-signature'
 
 export type CookieOptions = {
   domain: string,
@@ -73,19 +73,21 @@ export function pack (value: any, secretKey?: string): null | string {
 export function unpack (value: string, secretKey?: string): null | { value: any, signed: boolean } {
   let signed = false
 
+  let parsedValue: boolean | string = value
+
   /**
    * Unsign signed cookie values. The cookie builder
    * prepends `s:` in front of signed cookies
    */
-  if (value.substr(0, 2) === 's:' && secretKey) {
+  if (parsedValue.substr(0, 2) === 's:' && secretKey) {
     signed = true
-    value = cookieSignature.unsign(value.slice(2), secretKey)
+    parsedValue = cookieSignature.unsign(parsedValue.slice(2), secretKey)
   }
 
   /**
    * Return early when unable to unsign cookie
    */
-  if (!value) {
+  if (!parsedValue) {
     return null
   }
 
@@ -93,10 +95,10 @@ export function unpack (value: string, secretKey?: string): null | { value: any,
    * Parse JSON cookies using `JSON.parse`. The cookie builder
    * prepends `j:` to non string values.
    */
-  if (value.substr(0, 2) === 'j:') {
+  if (parsedValue.substr(0, 2) === 'j:') {
     try {
       return {
-        value: JSON.parse(value.slice(2)),
+        value: JSON.parse(parsedValue.slice(2)),
         signed,
       }
     } catch (error) {
@@ -104,7 +106,7 @@ export function unpack (value: string, secretKey?: string): null | { value: any,
     }
   }
 
-  return { value, signed }
+  return { value: parsedValue, signed }
 }
 
 /**
