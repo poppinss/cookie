@@ -1,11 +1,9 @@
+**[@poppinss/cookie](README.md)**
 
-#  @poppinss/cookie
+[Globals](README.md)
 
 ## Index
 
 ### External modules
 
-* [@poppinss/cookie](modules/_poppinss_cookie.md)
-
----
-
+* ["Cookie"](modules/_cookie_.md)

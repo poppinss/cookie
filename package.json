@@ -1,6 +1,6 @@
 {
   "name": "@poppinss/cookie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cookie parser for Node.js",
   "main": "build/index.js",
   "files": [
