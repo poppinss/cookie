@@ -1,6 +1,6 @@
-**[@poppinss/cookie](README.md)**
+[@poppinss/cookie](README.md)
 
-[Globals](README.md)
+# @poppinss/cookie
 
 ## Index
 
