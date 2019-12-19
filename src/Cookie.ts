@@ -1,7 +1,3 @@
-/**
- * @module @poppinss/cookie
- */
-
 /*
  * @poppinss/cookie
  *
