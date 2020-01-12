@@ -7,14 +7,15 @@
  * file that was distributed with this source code.
  */
 
-import cookie from 'cookie'
+import ms from 'ms'
 import cookieSignature from 'cookie-signature'
+import cookie, { CookieSerializeOptions } from 'cookie'
 
 export type CookieOptions = {
   domain: string,
   expires: Date | (() => Date),
   httpOnly: boolean,
-  maxAge: number,
+  maxAge: number | string,
   path: string,
   sameSite: boolean | 'lax' | 'none' | 'strict',
   secure: boolean,
@@ -173,10 +174,22 @@ export function serialize (
     return null
   }
 
-  if (options && typeof (options.expires) === 'function') {
-    const expires = options.expires()
-    return cookie.serialize(key, packedValue, Object.assign({}, options, { expires }))
+  /**
+   * Invoked expires method to get the date
+   */
+  let expires = options?.expires
+  if (typeof (expires) === 'function') {
+    expires = expires()
   }
 
-  return cookie.serialize(key, packedValue, options as any)
+  /**
+   * Parse string based max age to number
+   */
+  let maxAge = options?.maxAge
+  if (typeof (maxAge) === 'string') {
+    maxAge = ms(maxAge) / 1000
+  }
+
+  const parsedOptions = Object.assign({}, options, { maxAge, expires }) as CookieSerializeOptions
+  return cookie.serialize(key, packedValue, parsedOptions)
 }

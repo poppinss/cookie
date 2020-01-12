@@ -83,6 +83,33 @@ test.group('Cookie | serialize', () => {
       done()
     }, 1000 * 2)
   }).timeout(1000 * 4)
+
+  test('do not set expires when it is explicit undefined', (assert) => {
+    const config = { expires: undefined }
+    const serialized = serialize('username', 'virk', SECRET, config)
+    assert.equal(
+      serialized,
+      `username=${encodeURIComponent(`s:${sign('virk', SECRET)}`)}`,
+    )
+  })
+
+  test('convert max age string to seconds', (assert) => {
+    const config = { maxAge: '2h' }
+    const serialized = serialize('username', 'virk', SECRET, config)
+    assert.equal(
+      serialized,
+      `username=${encodeURIComponent(`s:${sign('virk', SECRET)}`)}; Max-Age=${60 * 60 * 2}`,
+    )
+  })
+
+  test('do not set max age when it is explicit undefined', (assert) => {
+    const config = { maxAge: undefined }
+    const serialized = serialize('username', 'virk', SECRET, config)
+    assert.equal(
+      serialized,
+      `username=${encodeURIComponent(`s:${sign('virk', SECRET)}`)}`,
+    )
+  })
 })
 
 test.group('Cookie | unpack', () => {
