@@ -1,4 +1,4 @@
-[@poppinss/cookie - v1.0.5](../README.md) › ["Cookie"](_cookie_.md)
+[@poppinss/cookie - v1.0.6](../README.md) › ["Cookie"](_cookie_.md)
 
 # External module: "Cookie"
 
@@ -21,7 +21,7 @@
 
 Ƭ **CookieOptions**: *object*
 
-*Defined in [Cookie.ts:13](https://github.com/poppinss/cookie/blob/1040a40/src/Cookie.ts#L13)*
+*Defined in [Cookie.ts:14](https://github.com/poppinss/cookie/blob/2fc2706/src/Cookie.ts#L14)*
 
 #### Type declaration:
 
@@ -31,7 +31,7 @@
 
 ▸ **pack**(`value`: any, `secretKey?`: undefined | string): *null | string*
 
-*Defined in [Cookie.ts:37](https://github.com/poppinss/cookie/blob/1040a40/src/Cookie.ts#L37)*
+*Defined in [Cookie.ts:38](https://github.com/poppinss/cookie/blob/2fc2706/src/Cookie.ts#L38)*
 
 Pack a value to be saved as a cookie string. If `secretKey` is
 defined, then cookie will be signed to avoid client side
@@ -61,7 +61,7 @@ ___
 
 ▸ **parse**(`cookieHeader`: string, `secretKey?`: undefined | string): *object*
 
-*Defined in [Cookie.ts:126](https://github.com/poppinss/cookie/blob/1040a40/src/Cookie.ts#L126)*
+*Defined in [Cookie.ts:127](https://github.com/poppinss/cookie/blob/2fc2706/src/Cookie.ts#L127)*
 
 Parse cookie header and return an object of cookies as `key/value` pair. The
 output of this method has two top level objects explained below:
@@ -95,7 +95,7 @@ ___
 
 ▸ **serialize**(`key`: string, `value`: any, `secretKey?`: undefined | string, `options?`: Partial‹[CookieOptions](_cookie_.md#cookieoptions)›): *string | null*
 
-*Defined in [Cookie.ts:165](https://github.com/poppinss/cookie/blob/1040a40/src/Cookie.ts#L165)*
+*Defined in [Cookie.ts:166](https://github.com/poppinss/cookie/blob/2fc2706/src/Cookie.ts#L166)*
 
 Serializes a key/value pair to a string, which is supposed
 to be set as `Set-Cookie` header value.
@@ -125,7 +125,7 @@ ___
 
 ▸ **unpack**(`value`: string, `secretKey?`: undefined | string): *null | object*
 
-*Defined in [Cookie.ts:69](https://github.com/poppinss/cookie/blob/1040a40/src/Cookie.ts#L69)*
+*Defined in [Cookie.ts:70](https://github.com/poppinss/cookie/blob/2fc2706/src/Cookie.ts#L70)*
 
 Unpack, previously packed cookie value. If cookie was signed and `secretKey` is
 not passed to this method, then the signed value will be returned as a plain

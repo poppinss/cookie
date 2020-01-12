@@ -1,6 +1,6 @@
-[@poppinss/cookie - v1.0.5](README.md)
+[@poppinss/cookie - v1.0.6](README.md)
 
-# @poppinss/cookie - v1.0.5
+# @poppinss/cookie - v1.0.6
 
 ## Index
 
