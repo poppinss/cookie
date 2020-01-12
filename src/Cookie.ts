@@ -12,7 +12,7 @@ import cookieSignature from 'cookie-signature'
 
 export type CookieOptions = {
   domain: string,
-  expires: Date,
+  expires: Date | (() => Date),
   httpOnly: boolean,
   maxAge: number,
   path: string,
@@ -173,5 +173,10 @@ export function serialize (
     return null
   }
 
-  return cookie.serialize(key, packedValue, options)
+  if (options && typeof (options.expires) === 'function') {
+    const expires = options.expires()
+    return cookie.serialize(key, packedValue, Object.assign({}, options, { expires }))
+  }
+
+  return cookie.serialize(key, packedValue, options as any)
 }

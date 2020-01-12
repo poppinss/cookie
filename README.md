@@ -39,14 +39,14 @@ yarn add @poppinss/cookie
 import { serialize, CookieOptions } from '@poppinss/cookie'
 import { createServer } from 'http'
 
-const expiresAt = new Date()
-
-// Expires in a week
-expiresAt.setDate(new Date().getDate() + 7)
-
 const options: CookieOptions = {
   domain: 'foo.com',
-  expires: expiresAt,
+  expires: () => {
+    const expiresAt = new Date()
+
+    // Expires in a week
+    expiresAt.setDate(new Date().getDate() + 7)
+  },
   httpOnly: true,
   path: '/',
   sameSite: true,

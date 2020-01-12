@@ -73,6 +73,16 @@ test.group('Cookie | serialize', () => {
   test('do not serialize null values', (assert) => {
     assert.isNull(serialize('username', null, SECRET, { httpOnly: true }))
   })
+
+  test('invoke expires callback when defined as a function', (assert, done) => {
+    const config = { expires: () => new Date() }
+    const serialized = serialize('username', 'virk', SECRET, config)
+    setTimeout(() => {
+      const serialized1 = serialize('username', 'virk', SECRET, config)
+      assert.notEqual(serialized, serialized1)
+      done()
+    }, 1000 * 2)
+  }).timeout(1000 * 4)
 })
 
 test.group('Cookie | unpack', () => {
