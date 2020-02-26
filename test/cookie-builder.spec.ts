@@ -154,6 +154,11 @@ test.group('Cookie | unpack', () => {
       value: { name: 'virk' },
     })
   })
+
+  test('remove inline __proto__ properties', (assert) => {
+    const cookieValue = 'j:{ "name": "virk", "__proto__": { "admin": true } }'
+    assert.deepEqual(Object.assign({}, unpack(cookieValue)?.value), { name: 'virk' })
+  })
 })
 
 test.group('Cookie | parse', () => {

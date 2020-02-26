@@ -8,6 +8,7 @@
  */
 
 import ms from 'ms'
+import bourne from '@hapi/bourne'
 import cookieSignature from 'cookie-signature'
 import cookie, { CookieSerializeOptions } from 'cookie'
 
@@ -89,13 +90,15 @@ export function unpack (value: string, secretKey?: string): null | { value: any,
   }
 
   /**
-   * Parse JSON cookies using `JSON.parse`. The cookie builder
-   * prepends `j:` to non string values.
+   * Parse JSON cookies using `bourne.parse`. The cookie builder
+   * prepends `j:` to non string values. We use bourne instead of native
+   * JSON.parse to avoid prototype poising. Read this
+   * https://medium.com/intrinsic/javascript-prototype-poisoning-vulnerabilities-in-the-wild-7bc15347c96
    */
   if (parsedValue.substr(0, 2) === 'j:') {
     try {
       return {
-        value: JSON.parse(parsedValue.slice(2)),
+        value: bourne.parse(parsedValue.slice(2), { protoAction: 'remove' }),
         signed,
       }
     } catch (error) {

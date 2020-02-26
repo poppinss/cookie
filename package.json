@@ -72,6 +72,7 @@
     "yolo": false
   },
   "dependencies": {
+    "@hapi/bourne": "^2.0.0",
     "cookie": "^0.4.0",
     "cookie-signature": "^1.1.0",
     "ms": "^2.1.2"
