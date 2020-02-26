@@ -21,7 +21,7 @@
 
 Ƭ **CookieOptions**: *object*
 
-*Defined in [Cookie.ts:14](https://github.com/poppinss/cookie/blob/cf7d6d7/src/Cookie.ts#L14)*
+*Defined in [Cookie.ts:15](https://github.com/poppinss/cookie/blob/d98268f/src/Cookie.ts#L15)*
 
 #### Type declaration:
 
@@ -45,7 +45,7 @@
 
 ▸ **pack**(`value`: any, `secretKey?`: undefined | string): *null | string*
 
-*Defined in [Cookie.ts:38](https://github.com/poppinss/cookie/blob/cf7d6d7/src/Cookie.ts#L38)*
+*Defined in [Cookie.ts:39](https://github.com/poppinss/cookie/blob/d98268f/src/Cookie.ts#L39)*
 
 Pack a value to be saved as a cookie string. If `secretKey` is
 defined, then cookie will be signed to avoid client side
@@ -75,7 +75,7 @@ ___
 
 ▸ **parse**(`cookieHeader`: string, `secretKey?`: undefined | string): *object*
 
-*Defined in [Cookie.ts:127](https://github.com/poppinss/cookie/blob/cf7d6d7/src/Cookie.ts#L127)*
+*Defined in [Cookie.ts:130](https://github.com/poppinss/cookie/blob/d98268f/src/Cookie.ts#L130)*
 
 Parse cookie header and return an object of cookies as `key/value` pair. The
 output of this method has two top level objects explained below:
@@ -113,7 +113,7 @@ ___
 
 ▸ **serialize**(`key`: string, `value`: any, `secretKey?`: undefined | string, `options?`: Partial‹[CookieOptions](_cookie_.md#cookieoptions)›): *string | null*
 
-*Defined in [Cookie.ts:166](https://github.com/poppinss/cookie/blob/cf7d6d7/src/Cookie.ts#L166)*
+*Defined in [Cookie.ts:169](https://github.com/poppinss/cookie/blob/d98268f/src/Cookie.ts#L169)*
 
 Serializes a key/value pair to a string, which is supposed
 to be set as `Set-Cookie` header value.
@@ -143,7 +143,7 @@ ___
 
 ▸ **unpack**(`value`: string, `secretKey?`: undefined | string): *null | object*
 
-*Defined in [Cookie.ts:70](https://github.com/poppinss/cookie/blob/cf7d6d7/src/Cookie.ts#L70)*
+*Defined in [Cookie.ts:71](https://github.com/poppinss/cookie/blob/d98268f/src/Cookie.ts#L71)*
 
 Unpack, previously packed cookie value. If cookie was signed and `secretKey` is
 not passed to this method, then the signed value will be returned as a plain
