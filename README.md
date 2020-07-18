@@ -6,6 +6,8 @@
 # Cookie
 > Cookie parser and serializer for Node.js
 
+🚨🚨 **Have been moved inline to AdonisJS and hence depreciating this module 🚨🚨
+
 [![circleci-image]][circleci-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
 
 A generic cookie parser and serializer for Node.js. This module exports handful of functions that can be used with any framework or even raw HTTP server to `parse` and `serialize` cookies.
