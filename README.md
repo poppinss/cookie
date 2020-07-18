@@ -6,7 +6,7 @@
 # Cookie
 > Cookie parser and serializer for Node.js
 
-🚨🚨 **Have been moved inline to AdonisJS and hence depreciating this module 🚨🚨
+🚨🚨 **Have been moved inline to AdonisJS and hence depreciating this module** 🚨🚨
 
 [![circleci-image]][circleci-url] [![typescript-image]][typescript-url] [![npm-image]][npm-url] [![license-image]][license-url]
 
